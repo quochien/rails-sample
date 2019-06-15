@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_182628) do
+ActiveRecord::Schema.define(version: 2019_06_15_045627) do
 
   create_table "participants", force: :cascade do |t|
     t.string "email"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_182628) do
     t.integer "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.index ["status"], name: "index_participants_on_status"
   end
 
 end
