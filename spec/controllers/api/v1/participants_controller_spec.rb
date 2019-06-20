@@ -73,9 +73,9 @@ describe Api::V1::ParticipantsController, type: :controller do
       it 'returns not found' do
         put :update, params: { id: 123, status: 'accepted' }
 
-        expect(response).to have_http_status(:success)
+        expect(response.status).to eq(404)
         json_response = JSON.parse(response.body)
-        expect(json_response).to eq({ 'error' => 'Participant not found' })
+        expect(json_response).to eq({ 'message' => 'Not Found' })
       end
     end
 
@@ -85,7 +85,7 @@ describe Api::V1::ParticipantsController, type: :controller do
 
         expect(response).to have_http_status(:success)
         json_response = JSON.parse(response.body)
-        expect(json_response).to eq({ 'error' => 'Invalid status' })
+        expect(json_response).to eq({ 'message' => 'Invalid status' })
       end
     end
 
